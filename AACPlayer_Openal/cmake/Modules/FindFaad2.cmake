@@ -1,0 +1,14 @@
+find_package(PkgConfig)
+pkg_check_modules(PC_FAAD2 faad)
+
+find_path(FAAD2_INCLUDE_DIR faad.h HINTS ${PC_FAAD2_INCLUDEDIR} ${PC_FAAD2_INCLUDE_DIRS})
+
+find_library(FAAD2_LIBRARY faad HINTS ${PC_FAAD2_LIBDIR} ${PC_FAAD2_LIBRARY_DIRS})
+
+SET(FAAD2_LIBRARIES ${FAAD2_LIBRARY})
+SET(FAAD2_INCLUDE_DIRS ${FAAD2_INCLUDE_DIR})
+
+include(FindPackageHandleStandardArgs)
+find_package_handle_standard_args(FAAD2 DEFAULT_MSG FAAD2_LIBRARY FAAD2_INCLUDE_DIR)
+
+mark_as_advanced(FAAD2_INCLUDE_DIR FAAD2_LIBRARY )

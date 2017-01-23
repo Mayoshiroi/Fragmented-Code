@@ -1,0 +1,14 @@
+find_package(PkgConfig)
+pkg_check_modules(PC_OPENAL openal)
+
+find_path(OPENAL_INCLUDE_DIR al.h HINTS ${PC_OPENAL_INCLUDEDIR} ${PC_OPENAL_INCLUDE_DIRS})
+
+find_library(OPENAL_LIBRARY openal HINTS ${PC_OPENAL_LIBDIR} ${PC_OPENAL_LIBRARY_DIRS})
+
+SET(OPENAL_LIBRARIES ${OPENAL_LIBRARY})
+SET(OPENAL_INCLUDE_DIRS ${OPENAL_INCLUDE_DIR})
+
+include(FindPackageHandleStandardArgs)
+find_package_handle_standard_args(OPENAL DEFAULT_MSG OPENAL_LIBRARY OPENAL_INCLUDE_DIR)
+
+mark_as_advanced(OPENAL_INCLUDE_DIR OPENAL_LIBRARY )
