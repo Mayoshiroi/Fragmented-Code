@@ -7,7 +7,7 @@ find_package(LibUV REQUIRED)
 
 include_directories(LIBUV_INCLUDE_DIR)
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -g -O3 -Wno-unused-variable -Wno-unused-but-set-variable -fno-lto")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -O3 -Wno-unused-variable -Wno-unused-but-set-variable -fno-lto")
 
 add_executable(hellouv hellouv.c)
 target_Link_libraries(hellouv ${LIBUV_LIBRARY})
@@ -26,3 +26,15 @@ target_Link_libraries(tcpclient ${LIBUV_LIBRARY})
 
 add_executable(udp-dhcp udp-dhcp.c)
 target_Link_libraries(udp-dhcp ${LIBUV_LIBRARY})
+
+add_executable(thread-create thread-create.c)
+target_Link_libraries(thread-create ${LIBUV_LIBRARY})
+
+add_executable(locks locks.c)
+target_Link_libraries(locks ${LIBUV_LIBRARY})
+
+add_executable(queue-work queue-work.c)
+target_Link_libraries(queue-work ${LIBUV_LIBRARY})
+
+add_executable(progress progress.c)
+target_Link_libraries(progress ${LIBUV_LIBRARY})
