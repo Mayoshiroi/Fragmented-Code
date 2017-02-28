@@ -1,0 +1,14 @@
+find_package(PkgConfig)
+pkg_check_modules(PC_LIBUV libuv)
+
+find_path(LIBUV_INCLUDE_DIR uv.h HINTS ${PC_LIBUV_INCLUDEDIR} ${PC_LIBUV_INCLUDE_DIRS})
+
+find_library(LIBUV_LIBRARY libuv.so HINTS ${PC_LIBUV_LIBDIR} ${PC_LIBUV_LIBRARY_DIRS})
+
+SET(LIBUV_LIBRARIES ${LIBUV_LIBRARY})
+SET(LIBUV_INCLUDE_DIRS ${LIBUV_INCLUDE_DIR})
+
+include(FindPackageHandleStandardArgs)
+find_package_handle_standard_args(LIBUV DEFAULT_MSG LIBUV_LIBRARY LIBUV_INCLUDE_DIR)
+
+mark_as_advanced(LIBUV_INCLUDE_DIR LIBUV_LIBRARY )
