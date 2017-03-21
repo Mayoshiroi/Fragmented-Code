@@ -1,0 +1,14 @@
+find_package(PkgConfig)
+pkg_check_modules(PC_LIBGC bdw-gc)
+
+find_path(LIBGC_INCLUDE_DIR gc.h HINTS ${PC_LIBGC_INCLUDEDIR} ${PC_LIBGC_INCLUDE_DIRS})
+
+find_library(LIBGC_LIBRARY gc HINTS ${PC_LIBGC_LIBDIR} ${PC_LIBGC_LIBRARY_DIRS})
+
+SET(LIBGC_LIBRARIES ${LIBGC_LIBRARY})
+SET(LIBGC_INCLUDE_DIRS ${LIBGC_INCLUDE_DIR})
+
+include(FindPackageHandleStandardArgs)
+find_package_handle_standard_args(LIBGC DEFAULT_MSG LIBGC_LIBRARY LIBGC_INCLUDE_DIR)
+
+mark_as_advanced(LIBGC_INCLUDE_DIR LIBGC_LIBRARY )

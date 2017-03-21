@@ -26,6 +26,7 @@ void alloc_buffer(uv_handle_t *handle, size_t suggested_size, uv_buf_t *buf) {
 }
 
 void echo_write(uv_write_t *req, int status) {
+	printf("fuck! \n");
     if (status) {
         fprintf(stderr, "Write error %s\n", uv_strerror(status));
     }
@@ -50,6 +51,7 @@ void echo_read(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf) {
 }
 
 void on_new_connection(uv_stream_t *server, int status) {
+printf("NEW CONNECTION! \n");
     if (status < 0) {
         fprintf(stderr, "New connection error %s\n", uv_strerror(status));
         // error!
@@ -64,6 +66,7 @@ void on_new_connection(uv_stream_t *server, int status) {
     else {
         uv_close((uv_handle_t*) client, NULL);
     }
+
 }
 
 int main() {
